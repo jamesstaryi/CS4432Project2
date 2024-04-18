@@ -26,8 +26,6 @@ public class Index {
                         if(hash.containsKey(randomV)){
                             hash.put(randomV, hash.get(randomV) + ", " + location);
                             array[Integer.parseInt(randomV)-1] = array[Integer.parseInt(randomV)-1] + ", " + location;
-                            //System.out.println(array[Integer.parseInt(randomV)-1]);
-                            //System.out.println(hash.get(Integer.parseInt(randomV)));
                         }
                         else{
                             array[Integer.parseInt(randomV)-1] = location;
@@ -158,13 +156,13 @@ public class Index {
         System.out.println("Time Taken: " + ((stopTime - startTime)/1000000) + " ms");
     }
 
-    //Range-Based Query if there are no indexes built
+    //Range-Based Query if there are indexes built
     //Uses the array
     public void rangeScan(String v1, String v2){
         System.out.println("Using array-based index for scan");
         String output = "";
         long startTime = System.nanoTime();
-        for(int i = Integer.parseInt(v1); i < Integer.parseInt(v2); i++){
+        for(int i = Integer.parseInt(v1); i < Integer.parseInt(v2)-1; i++){
             if(array[i] != null){
                 output = output + array[i] + ", ";
             }
